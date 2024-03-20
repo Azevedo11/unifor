@@ -1,15 +1,15 @@
 
 <img src="https://drive.google.com/uc?id=1SOzRTjUt7cuBJpSqoK90fcAiKBrnpUJo" width="400">
 
-**Curso:** preencha com seus dados <br>
+**Curso:** Engenharia Civil <br>
 **Disciplina:** preencha com seus dados <br>
 **Código/Turma:** preencha com seus dados <br>
 **Professor:** Ricardo Carubbi <br>
 **Data:** preencha com a data de envio <br>
-**Aluno(a):** preencha com seus dados <br>
-**Matrícula:** preencha com seus dados <br>
+**Aluno(a):** Silvio de azevedo rocha filho <br>
+**Matrícula:** 2410600 <br>
 
-**1a chamada (Sim/Não):** preencha com a opção correta <br>
+**1a chamada (Sim/Não):** sim <br>
 **2a chamada (Sim/Não):** preencha com a opção correta
 
 # Avaliação Diagnóstica 1
