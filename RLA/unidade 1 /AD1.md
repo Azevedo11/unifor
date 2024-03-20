@@ -2,7 +2,7 @@
 <img src="https://drive.google.com/uc?id=1SOzRTjUt7cuBJpSqoK90fcAiKBrnpUJo" width="400">
 
 **Curso:** Engenharia Civil <br>
-**Disciplina:** preencha com seus dados <br>
+**Disciplina:** Raciocínio Lógico Algorítmo <br>
 **Código/Turma:** preencha com seus dados <br>
 **Professor:** Ricardo Carubbi <br>
 **Data:** preencha com a data de envio <br>
