@@ -1,6 +1,5 @@
-
 # UNIFOR
-**Nome**: Nome do estudante <br>
+**Nome**: Silvio de azevedo rocha filho  <br>
 **Disciplina**: Raciocínio lógico algorítmico
 
 ## Lista de exercícios 01
@@ -12,71 +11,84 @@ Represente, em fluxograma e pseudocódigo, um algoritmo para determinar se um n�
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B{{Digite um número:}}
-B --> C[\numero\]
-C --> D{numero >= 0}
-D --FALSE--> E[O número não é positivo!]
-D --TRUE--> F[resto = numero % 2]
-E --> Z([FIM])
-F --> G{resto == 0}
-G --FALSE--> H{{O número é impar!}}
-G --TRUE--> I{{O número é par!}}
+A([INICIO]) --> B{{Digíte um numero}}
+B --> C[/N1/]
+C --> D{N1 < 0}
+D --TRUE-->E{{o número informado é negativo}}
+E -->B
+D --FALSE-->F[Rest = N1 % 2]
+F --> G{Rest == 0}
+G --FALSE--> H{{O numero informado é impar}}
+G --TRUE--> I{{O numero informado é par}}
+I --> Z([FIM])
 H --> Z
-I --> Z
 ```
 
 #### Pseudocódigo (0,5 ponto)
 ```
-1  ALGORTIMO verifica_par_impar
-2  DECLARE numero, resto: INTEIRO
-3  ESCREVA "Digite um número: "
-4  INICIO
-4  LEIA numero
-5  SE numero >= 0 ENTAO                  // verifica se o inteiro é positivo
-6    resto = numero % 2                 // calcula o resto da divisão por 2
-7    SE resto == 0 ENTAO                // verifica se o resto é igual a zero
-8      ESCREVA "O número é par!"
-9    SENAO
-10     ESCREVA "O número é impar!"
-11   FIM_SE
-11  SENAO                                // caso inteiro for negativo (condição linha 5)
-12    ESCREVA "O número deve ser postivo!"
-13  FIM_SE
-13 FIM
+ALGORÍTIMO par_ou_impar
+DECLARE N1, Rest: Int
+INICIO
+ESCREVA "Digite um número"
+LEIA N1
+ENQUANTO N1 < 0 FAÇA
+	ESCREVA "O número informado é negativo"
+FIM_ENQUANTO
+Rest = N1 % 2
+SE Rest == 0
+	ESCREVA "O número informado é par"
+SENÃO 
+	ESCREVA "O número informado é impar"
+FIM_SE
+FIM_ALGORITIMO
 ```
 
 #### Teste de mesa (0,25 ponto)
-| numero | numero >= 0 | resto | resto == 0 | Saída |
-| -- | -- | -- | -- | -- | 
-| -1 | F |   |   | "O número deve ser postivo!" |
-| 0  | V | 0 | V | "O número é par!" |
-| 13 | V | 1 | F | "O número é impar!" |
-| 30 | V | 0 | V | "O número é par!" |
-
+|N1|N1 < 0|Rest = N1 % 2|Rest == 0|Saída|
+|--|--|--|--|--|
+|7|F|1|F|O número informado é impar
+|18|F|0|T|O número informado é par
+|-72|V|-|-|O número informado é negativo
 ## Exercício 02 (3 pontos)
 Represente, em fluxograma e pseudocódigo, um algoritmo para calcular o novo salário de um funcionário. 
 Sabe-se que os funcionários que recebem atualmente salário de até R$ 500 terão aumento de 20%; os demais terão aumento de 10%.
 
 #### Fluxograma (1.0 ponto)
-
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{Digite o seu salaraio atual}}
+B --> C[/SA/]
+C --> D{SA >= 500}
+D --FALSE--> E[SN = SA * 1.1]
+D --TRUE--> F[SN = SA * 1.2]
+E --> Z{{O seu salario novo é SN}}
+F --> Z
+Z --> Z1([FIM]) 
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+ALGORITIMO novo_salário
+DECLARE SA, SN: Int
+INICIO
+ESCREVA "Digite o seu salário atual"
+LEIA SA
+SE SA >= 500
+	SN = SA * 1.1
+SENÃO
+	SN = SA * 1.2
+FIM_SE
+ESCREVA "O seu salário novo é", SN
+FIM_ALGORÍTIMO
 ```
 
 #### Teste de mesa (1.0 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+|SA|SA >= 500|SN|SAÍDA|
+|--|--|--|--|
+|470|F|564|O seu salário novo é 564|
+|550|V|605|O seu salário novo é 605|
 
 ## Exercício 03 (3 pontos)
 Represente, em fluxograma e pseudocódigo, um algoritmo para calcular a média aritmética entre duas notas de um aluno e mostrar sua situação, que pode ser aprovado ou reprovado.
@@ -85,23 +97,60 @@ Represente, em fluxograma e pseudocódigo, um algoritmo para calcular a média a
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{Digite a sua primeira nota}}
+B --> C[/N1/]
+C --> L{N1 >= 0 e N1 <= 100}
+L --TRUE--> D{{Digite a sua segunda nota}}
+L --FALSE--> M{{Digite uma nota válida}}
+M --> C
+D --> E[/N2/]
+E --> N{N2 >= 0 e N2 <= 100}
+N --TRUE--> F[Soma = N1 + N2]
+F --> X[Med = Soma / 2]
+X --> G{Med >= 70}
+N --FALSE--> O{{Digite uma nota válida}}
+O --> E
+G --FALSE--> H{{Voce foi reprovado}}
+G --TRUE--> I{{Voce foi aprovado}}
+H --> Z
+I --> Z([FIM])
 ```
 
 #### Pseudocódigo (1 ponto)
 
 ```
 Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+DECLARE N1, N2, Med: Int
+INICIO
+ESCREVA "Digite a sua primeira nota"
+LEIA N1
+ENQUANTO N1 < 0 e N1 > 100 FAÇA
+	ESCREVA "Digite uma nota válida"
+	LEIA N1
+FIM_ENQUANTO
+ESCREVA "Digite a sua segunda nota"
+LEIA N2 
+ENQUANTO N2 < 0 e N2 > 100 FAÇA
+	ESCREVA "Digite uma nota válida"
+	LEIA N2
+FIM_ENQUANTO
+Med = (N1 + N2)/2
+SE Med >= 70
+	ESCREVA "Voce foi aprovado"
+SENÃO
+	ESCREVA "Voce foi reprovado"
+FIM_SE
+FIM_ALGORITIMO 
 ```
 
 #### Teste de mesa (1 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
-
+|N1|N1 < 0 e N1 > 100|N2|N2 < 0 e N2 > 100|Med = (N1 + N2)/2|Med >= 70|Saída|
+|--|--|--|--|--|--|--|
+|100|F|60|F|80|V|Voce foi aprovado|
+|60|F|70|F|65|F|Voce foi reprovado|
+|-70|V|-|-|-|-|Digite uma nota válida|
+|50|F|150|V|-|-|Digite uma nota válida|
 ## Exercício 04 (3 pontos)
 Represente, em fluxograma e pseudocódigo, um algoritmo que, a partir da idade do candidato(a), determinar se pode ou não tirar a CNH. 
 Caso não atender a restrição de idade, calcular quantos anos faltam para o candidato estar apto.
@@ -110,20 +159,46 @@ Caso não atender a restrição de idade, calcular quantos anos faltam para o ca
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{Digite a sua idade}}
+B --> C[/Id/]
+C --> D{Id >= 0}
+D --FALSE--> E{{Digite uma idade válida}}
+E --> C
+D --TRUE--> F{Id >= 18}
+F --FALSE--> G[Idr = 18 - Id]
+G --> H{{"Voce não pode tirar o CNH, ainda lhe falta Idr ano(s)"}} 
+F --TRUE--> I{{Voce ja pode tirar o seu CNH}}
+H --> Z([FIM])
+I --> Z
 ```
+
+
 
 #### Pseudocódigo (1.0 ponto)
 
 ```
 Algoritmo ContaAprovacoes
+DECLARE Id, Idr: Int
+INICIO
+ESCREVA "Digite a sua idade"
+LEIA Id
+ENQUANTO Id < 0 FAÇA 
+	ESCREVA "Digite uma idade valida"
+	LEIA Id
+FIM_ENQUANTO
+SE Id >= 18
+	ESCREVA "Voce ja pode tirar o seu CNH"
+SENÃO
+	Idr = 18 - Id
+	ESCREVA "Voce não pode tirar o CNH, ainda lhe falta", Idr, "ano(s)"
+FIM_SE
 FIM_ALGORITMO
 ```
 
 #### Teste de mesa (1.0 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
-
+|Id|Id < 0|Id >= 18|Idr = 18 - Id|Saída| 
+|--|--|--|--|--| 
+|17|F|F|1|Voce não pode tirar o CNH, ainda lhe falta 1 ano(s)|
+|-9999999999999|V|-|-|Digite uma idade valida|
+|19|F|V|-|Voce ja pode tirar o seu CNH
