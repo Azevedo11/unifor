@@ -5,7 +5,7 @@
 **Disciplina:** Raciocínio Lógico Algorítmo <br>
 **Código/Turma:** preencha com seus dados <br>
 **Professor:** Ricardo Carubbi <br>
-**Data:** preencha com a data de envio <br>
+**Data:** 20/03 <br>
 **Aluno(a):** Silvio de azevedo rocha filho <br>
 **Matrícula:** 2410600 <br>
 
@@ -26,22 +26,35 @@ $$AV_1 = AF_1 \times 0,30 + AD_1 \times 0,70$$
 A **AD1** é formada pela entrega dos exercícios (**EX1**) na data prevista e apresentação (**AP1**) de um dos exercícios escolhido pelo professor.
 Segue abaixo a expressão para o cálculo da **AD1**.
 
-$$AD_1 = EX1_1 + AP_1 $$
+$$AD_1 = (EX1_1 + AP_1)/2 $$
 
 A **EX1** é avaliada mediante a **correção dos exercícios**, sendo a avaliação no intervalo de 0% (não atende a questão), 50% (atende parcialmente) e 100% (atende em sua totalidade).
 Por exemplo, se o exercício equivale a 2 pontos e sua correção atente parcialmente a questão, então sua avaliação deste exercício será 1 ponto.
 
 A **AP1** é avaliada mediante aos pré-requisitos de **clareza, organização e domínio do conteúdo**. Portanto, o aluno deve demonstrar um bom entendimento do algoritmo, explicando seus princípios fundamentais, seu propósito e como ele funciona passo a passo. <br>
 
-A avaliação da **AP1** é apenas considerada no intervalo de 0% (não atende os pré-requisitos), 50% (atende parcialmente) e 100% (atende em sua totalidade).
-Por exemplo, se na apresentação do exercício, o aluno atenter parcialmente os pré-requisitos, então sua avaliação da apresentação será 5,0.
+A avaliação da **AP1** é apenas considerada no intervalo de 0% (não atende os pré-requisitos), 25% (pouco atende os pré-requisitos), 50% (atende de forma mediana os pré-requisitos), 75% (atende de forma razoável os pré-requisitos) e 100% (atende em a totalidade dos pré-requisitos).
+Por exemplo, se na apresentação do exercício, o aluno atenter de forma razoável a questão, então sua avaliação da apresentação será 7.5 pontos.
+
+## Datas
+- Entrega da primeira avaliação formativa (**AF1**) composta pelas listas de exerciícios 1, 2 e 3: 21/03/24
+- Entrega dos exercícios da primeira avaliação diagnóstica (**EX1**): 21/03/24
+- Apresentação da primeira avaliação diagnóstica (**AP1**): 21/03/24
 
 ## Lista de questões
 
 ### Questão 1 - Troca dos valores de duas variáveis (1 ponto)
 
 Dadas duas variáveis, $a$ e $b$, implemente e teste um algoritmo para trocar os valores atribuídos a elas.
-#### Fluxograma (0.25 ponto)
+
+#### Descrição geral do algoritmo
+
+1. Guardar o valor original da variável $a$ em uma variável auxiliar $aux$;
+2. Atribuir à variável $a$ o valor original da variável $b$;
+3. Atribuir à variável $b$ o valor original da variável $a$, que está armazenado na variável auxiliar $aux$.
+4. Exibir os novos valores de $a$ e $b$.
+
+#### Fluxograma
 
 ```mermaid
 flowchart TD
@@ -56,8 +69,7 @@ H --> I{{A, B}}
 I --> J([FIM])
 ```
 
-#### Pseudocódigo (0.5 ponto)
-
+#### Pseudocódigo (1 ponto)
 ```
 Algoritmo TrocaValores
 DECLARE A, B, Mem: float
@@ -72,8 +84,7 @@ A = Mem
 ESCREVA A, B
 FIM_ALGORITMO
 ```
-
-#### Teste de mesa (0.25 ponto)
+#### Teste de mesa
 
 | A  | B | Mem = B | B = A | A = Mem | Saida |
 | -- | -- | -- | -- | -- | -- |
@@ -84,7 +95,17 @@ FIM_ALGORITMO
 Dado um conjunto $n$ de notas de alunos em um exame, implemente e teste um algoritmo para fazer uma contagem $cont$ do número de alunos que foram aprovados no exame. 
 Será considerado aprovado o aluno que tirar $nota$ 50 ou maior (no intervalo de 0 a 100).
 
-#### Fluxograma (0.25 ponto)
+#### Descrição geral do algoritmo
+
+1. Obter o número de notas $n$ a serem processadas;
+2. Inicializar a contagem $cont$ com zero;
+3. Enquanto houver notas a serem processadas, fazer repetidamente:
+    - obter a próxima nota;
+    - se a nota for suficiente para passar no exame ($n ≥ 50$) então adicionar 1 (um) à contagem $cont$;
+4. Exibir a contagem $cont$ (número total de aprovações).
+
+#### Fluxograma 01
+Fluxograma conforme descrição do algoritmo acima, usando o loop ENQUANTO.
 
 ```mermaid
 flowchart TD
@@ -106,8 +127,7 @@ L --FALSE--> N
 N --> H
 I --> Z([FIM])
 ```
-
-#### Pseudocódigo (0.5 ponto)
+#### Pseudocódigo 01 (1 ponto)
 
 ```
 Algoritimo aprovação
@@ -133,7 +153,8 @@ FIM_PARA
 ESCREVA "A quantidade de notas aprovadas foi", N_aprov
 FIM_ALGORÍRIMO
 ```
-#### Teste de mesa (0.25 ponto)  
+
+#### Teste de mesa 01
 ##### Chat GPT
 | Iteração | Ação                                              | Entrada/Saída  | N_aprov | N_ver |
 |----------|---------------------------------------------------|----------------|---------|-------|
@@ -165,15 +186,21 @@ FIM_ALGORÍRIMO
 | -        | **Saída de Resultados**                           |                |         |       |
 | -        | Mensagem: "A quantidade de notas aprovadas foi 3"|                |         |       |
 
-
-
-
 ### Questão 3 - Soma de um conjunto de números (1 ponto)
 
 Dado um conjunto de $n$ números, implemente e teste um algoritmo para calcular a soma desses números. <br>
 Aceite apenas $n$ maior ou igual a zero.
 
-#### Fluxograma (0.25 ponto)
+#### Descrição geral do algoritmo
+
+1. Obter a quantidade de números $n$ a serem somados.
+2. Inicializar a variável $soma$ com 0 (zero).
+3. Enquanto menos do que $n$ números tiverem sido somados, fazer repetidamente:
+    - obter o próximo número $i$;
+    - calcular a soma atual, adicionando o número $i$ obtido à soma mais recente;
+4. Exibir a soma dos $n$ números
+
+#### Fluxograma
 
 ```mermaid
 flowchart TD
@@ -194,8 +221,7 @@ H --TRUE--> M{{A valor da soma total é soma}}
 M --> N([FIM])
 ```
 
-#### Pseudocódigo (0.5 ponto)
-
+#### Pseudocódigo (1 ponto)
 ```
 Algoritmo soma_de_valores
 DECLARE num_somados, num_soma: Int
@@ -217,7 +243,7 @@ ESCREVA "O valor da soma total é", soma
 FIM_ALGORITMO
 ```
 
-#### Teste de mesa (0.25 ponto)
+#### Teste de mesa
 ##### Chat GPT
 
 | Iteração | Ação                                              | Entrada/Saída | soma | num_somados |
@@ -258,11 +284,22 @@ FIM_ALGORITMO
 
 ### Questão 4 - Cálculo de uma série (1 ponto)
 
-Calcular o valor de S, conforme definido pela seguinte série infinita:
+Dado um conjunto de $n$ termos da série, implemente e teste um algoritmo para calcular o valor de S, conforme definido abaixo:
 
 $$ S = \frac{1}{2} + \frac{3}{4} + \frac{5}{6} + \frac{7}{8} + \dots $$
 
-#### Fluxograma (0.25 ponto)
+#### Descrição geral do algoritmo
+
+1. Obter o número de termos $n$;
+2. Inicializar a variável $S$ com 0 (zero).
+3. Iterar o valor de $n$ na variável $i$ iniciando com 0 (zero), de acordo com as instruções abaixo:
+    - calcular o numerador na variável $numerador$;
+    - calcular o denominador  na variável $denominador$;;
+    - calcular o termo da série na variável $termo$, onde $termo = numerador/denominador$;
+    - adicionar esse termo à variável $S$.
+4. Exibir o valor da série $S$.
+
+#### Fluxograma
 
 ```mermaid
 flowchart TD
@@ -280,7 +317,8 @@ H --TRUE--> K{{"O valor da soma de Num_termos termo(s) da série é S"}}
 K --> L([FIM])
 ```
 
-#### Pseudocódigo (0.5 ponto)
+#### Pseudocódigo (1 ponto)
+
 ```
 Algoritmo soma_da_serie
 DECLARE Num_termo, termo: Int
@@ -299,6 +337,7 @@ FIM_PARA
 ESCREVA "O valor da soma de", Num_termo, "termo(s) da série é", S
 FIM_ALGORITMO
 ```
+
 #### Teste de mesa (0.25 ponto)
 ##### Chat GPT
 
@@ -320,43 +359,19 @@ FIM_ALGORITMO
 |          |                  0                                   |               |       |
 
 
-
-| Iteração | Ação                                                 | Entrada/Saída | S           |
-|----------|------------------------------------------------------|---------------|-------------|
-| -        | **Inicialização das Variáveis**                      |               | 0           |
-| -        | **Entrada do Número de Termos da Série**            |               |             |
-| 1        | Mensagem: "Digite a quantidade de termos da série"  |               |             |
-|          | Entrada: Num_termo                                   |               | 5           |
-|          |                                                      |               |             |
-| 2        | **Loop de Cálculo da Soma da Série**                |               |             |
-|          | termo = 1                                             |               |             |
-|          | S =+ (2 * termo - 1)/(2 * termo)                     |               | 0.5         |
-|          |                                                      |               |             |
-| 3        | termo = 2                                             |               |             |
-|          | S =+ (2 * termo - 1)/(2 * termo)                     |               | 1.25       |
-|          |                                                      |               |             |
-| 4        | termo = 3                                             |               |             |
-|          | S =+ (2 * termo - 1)/(2 * termo)                     |               | 2.0833       |
-|          |                                                      |               |             |
-| 5        | termo = 4                                             |               |             |
-|          | S =+ (2 * termo - 1)/(2 * termo)                     |               | 2.9583       |
-|          |                                                      |               |             |
-| 6        | termo = 5                                             |               |             |
-|          | S =+ (2 * termo - 1)/(2 * termo)                     |               | 3.8583       |
-|          |                                                      |               |             |
-| -        | **Saída de Resultados**                              |               |             |
-| -        | Mensagem: "O valor da soma de 5 termos da série é" 3.8583    |               | 3.8583      |
-
-
-
-
-
-
 ### Questão 5 - Cálculo fatorial (2 pontos)
 
-Dado um número $n$, calcular o fatorial de $n$ (escrito como $n!$), onde $n ≥ 0$.
+Dado um número $n$, implemente e teste um algoritmo para calcular o fatorial de $n$ (escrito como $n!$), onde $n ≥ 0$.
 
-#### Fluxograma (0.5 ponto)
+#### Descrição geral do algoritmo
+
+1. Obter o número $n$, onde $n \geq 0$;
+2. Inicializar a variável $fator$ com 1 (um) para armazenar o resultado do cálculo do fatorial;
+3. Iterar o valor de $n$ na variável $i$, ou seja, executar $n$ vezes, as instruções abaixo:
+    - Incrementar o valor atual $fator$ multiplicando pelo valor de $i$;
+4. Exibir o resultado ($n!$).
+
+#### Fluxograma
 
 ```mermaid
 flowchart TD
@@ -374,7 +389,7 @@ I --> G
 G --TRUE--> Y{{O valor do fatorial de n é fato}}
 Y --> Z([FIM]) 
 ```
-#### Pseudocódigo (1.0 ponto)
+#### Pseudocódigo (2 pontos)
 
 ```
 Algoritmo fatorial
@@ -395,7 +410,8 @@ ESCREVA "O valor do fatorial de", n, "é", fato
 FIM_ALGORITMO
 ```
 
-#### Teste de mesa (0.5 ponto)
+#### Teste de mesa
+
 ##### Chat GPT
 | Iteração | Ação                                                          | Entrada/Saída | fato | n_mult |
 |----------|---------------------------------------------------------------|---------------|------|--------|
@@ -413,10 +429,10 @@ FIM_ALGORITMO
 
 | Iteração | Ação                                                          | Entrada/Saída | fato | n_mult |
 |----------|---------------------------------------------------------------|---------------|------|--------|
-| -        | **Inicialização das Variáveis**                               |               | 0    | 0      |
+| -        | **Inicialização das Variáveis**                               |               | 1    | 0      |
 | -        | **Entrada do Número para o Cálculo do Fatorial**             |               |      |        |
 | 1        | Mensagem: "Digite o número do fatorial que você quer calcular"|               |      |        |
-|          | Entrada: n                                                    |               | 0    |        |
+|          | Entrada: n                                                    |               | 1    |        |
 |          |                                                               |               |      |        |
 | 2        | **Verificação da Validade do Número**                         |               |      |        |
 |          | (nenhuma ação necessária, 0 é válido)                         |               |      |        |
@@ -426,7 +442,7 @@ FIM_ALGORITMO
 
 | Iteração | Ação                                                          | Entrada/Saída | fato | n_mult |
 |----------|---------------------------------------------------------------|---------------|------|--------|
-| -        | **Inicialização das Variáveis**                               |               | 0    | 0      |
+| -        | **Inicialização das Variáveis**                               |               | 1    | 0      |
 | -        | **Entrada do Número para o Cálculo do Fatorial**             |               |      |        |
 | 1        | Mensagem: "Digite o número do fatorial que você quer calcular"|               |      |        |
 |          | Entrada: n                                                    |               | 6    |        |
@@ -436,7 +452,7 @@ FIM_ALGORITMO
 |          |                                                               |               |      |        |
 | 3        | **Cálculo do Fatorial**                                       |               |      |        |
 |          | n_mult = 1                                                    |               |      | 1      |
-|          | fato = fato * n_mult                                          |               | 0    | 1      |
+|          | fato = fato * n_mult                                          |               | 1    | 1      |
 |          |                                                               |               |      |        |
 | 4        | n_mult = 2                                                    |               |      | 2      |
 |          | fato = fato * n_mult                                          |               | 1    | 2      |
@@ -456,54 +472,218 @@ FIM_ALGORITMO
 | -        | **Saída do Resultado**                                        |               |      |        |
 | -        | Mensagem: "O valor do fatorial de 6 é 720"                    |               | 720  |        |
 
-
 ### Questão 6 - Geração da sequência de Fibonacci (2 pontos)
 
 Gerar e imprimir os $n$ primeiros termos da sequência de Fibonacci, onde $n ≥ 1$. <br>
-Os primeiros termos são: $0, 1, 1, 2, 3, 5, 8, 13, \dots$ <br>
-Cada termo, além dos dois primeiros, é derivado da soma dos seus dois antecessores mais próximos.
+Os primeiros termos são: $0, 1, 1, 2, 3, 5, 8, 13, \dots$. Cada termo, além dos dois primeiros, é derivado da soma dos seus dois antecessores mais próximos.
 
-#### Fluxograma (0.5 ponto)
+#### Descrição geral do algoritmo
+
+1. Obter o número de termos $n$, onde $n \geq 1$;
+2. Inicializar os dois primeiros termos da série nas variável $a$ e $b$ com 0 (zero);
+3. Iterar o valor de $n$, ou seja, executar $n$ vezes, as instruções abaixo:
+    - Imprimir o termo inicial $a$ (instrução para exibir a sequência ao atualizar a variável $a$);
+    - Somar os termos $a$ e $b$ na variável $termo_atual$;
+    - Atribuir a variável $a$ o valor da variável $b$;
+    - Atribuir a variável $b$ o valor da variável $termo_atual$.
+
+#### Fluxograma
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{"Número de termos da série Fibonacci:"}}
+B --> C[a = 0]
+C --> D[b = 1]
+D --> E[[i=1 ATÉ n PASSO 1]]
+E --"i > n"--> J([FIM])
+E --"i=1,2,...,n"--> F{{a}}
+F --> G[termo_atual = a + b]
+G --> H[a = b]
+H --> I[b = termo_atual]
+I --LOOP--> E 
 ```
 
-#### Pseudocódigo (1.0 ponto)
+#### Pseudocódigo (2 pontos)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+Algoritimo fibonacci
+DECLARE T1, T2, Tmem, TS, i: Int
+INICIO
+T1 = 0
+T2 = 1
+ESCREVA "Digite qual termo de fibonacci você quer calcular"
+LEIA TS
+ENQUANTO TS <= 0 FAÇA
+	ESCREVA "Digite um termo válido"
+	LEIA TS
+FIM_ENQUANTO
+PARA i DE 1 ATÉ TS [PASSO 1] FAÇA
+	ESRCREVA T1
+	Tmem = T1 + T2
+	T1 = T2
+	T2 = Tmem
+FIM_PARA
+FIM_ALGORITIMO
 ```
-#### Teste de mesa (0.5 ponto)
+#### Teste de mesa
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| Iteração | Ação                                                             | Entrada/Saída | T1  | T2  | Tmem | TS |
+|----------|------------------------------------------------------------------|---------------|-----|-----|------|----|
+| -        | **Inicialização das Variáveis**                                  |               | 0   | 1   |      |    |
+| -        | **Entrada do Termo de Fibonacci a ser calculado**               |               |     |     |      | 5  |
+| 1        | Mensagem: "Digite qual termo de Fibonacci você quer calcular"   |               |     |     |      |    |
+|          | Entrada: TS                                                      |               |     |     |      | 5  |
+|          |                                                                  |               |     |     |      |    |
+| 2        | **Verificação da Validade do Número**                            |               |     |     |      |    |
+|          | (nenhuma ação necessária, 5 é válido)                           |               |     |     |      |    |
+|          |                                                                  |               |     |     |      |    |
+| 3        | **Cálculo do Termo de Fibonacci**                                |               |     |     |      |    |
+|          | PARA i DE 1 ATÉ 5 [PASSO 1] FAÇA                                 |               |     |     |      |    |
+|          |                                                                  |               |     |     |      |    |
+| 4        | i = 1                                                            |               |     |     |      |    |
+|          | Escreva: T1                                                      |               | 0   | 1   |      |    |
+|          |                                                                  |               |     |     |     |    |
+|          | Tmem = T1 + T2                                                   |               |     |     | 1     |    |
+|          | T1 = T2                                                          |               | 1   |     |      |    |
+|          | T2 = Tmem                                                        |               |     | 1   |      |    |
+|          |                                                                  |               |     |     |      |    |
+| 5        | i = 2                                                            |               |     |     |      |    |
+|          | Escreva: T1                                                      |               | 1   | 1   |      |    |
+|          |                                                                  |               |     |     |    |    |
+|          | Tmem = T1 + T2                                                   |               |     |     | 2     |    |
+|          | T1 = T2                                                          |               | 1   |     |      |    |
+|          | T2 = Tmem                                                        |               |     | 2   |      |    |
+|          |                                                                  |               |     |     |      |    |
+| 6        | i = 3                                                            |               |     |     |      |    |
+|          | Escreva: T1                                                      |               | 1   | 2   |      |    |
+|          |                                                                  |               |     |     |      |    |
+|          | Tmem = T1 + T2                                                   |               |     |     |  3    |    |
+|          | T1 = T2                                                          |               | 2   |     |      |    |
+|          | T2 = Tmem                                                        |               |     | 3   |      |    |
+|          |                                                                  |               |     |     |      |    |
+| 7        | i = 4                                                            |               |     |     |      |    |
+|          | Escreva: T1                                                      |               | 2   | 3   |      |    |
+|          |                                                                  |               |     |     |    |    |
+|          | Tmem = T1 + T2                                                   |               |     |     | 5     |    |
+|          | T1 = T2                                                          |               | 3   |     |      |    |
+|          | T2 = Tmem                                                        |               |     | 5   |      |    |
+|          |                                                                  |               |     |     |      |    |
+| 8        | i = 5                                                            |               |     |     |      |    |
+|          | Escreva: T1                                                      |               | 3   | 5   |      |    |
+|          |                                                                  |               |     |     |      |    |
+|          | Tmem = T1 + T2                                                   |               |     |     |   8   |    |
+|          | T1 = T2                                                          |               | 5   |     |      |    |
+
+| Iteração | Ação                                                             | Entrada/Saída | T1  | T2  | Tmem | TS |
+|----------|------------------------------------------------------------------|---------------|-----|-----|------|----|
+| -        | **Inicialização das Variáveis**                                  |               | 0   | 1   |      |    |
+| -        | **Entrada do Termo de Fibonacci a ser calculado**               |               |     |     |      | 0  |
+| 1        | Mensagem: "Digite qual termo de Fibonacci você quer calcular"   |               |     |     |      |    |
+|          | Entrada: TS                                                      |               |     |     |      | 0  |
+|          |                                                                  |               |     |     |      |    |
+| 2        | **Verificação da Validade do Número**                            |               |     |     |      |    |
+|          | Mensagem: "Digite um termo válido"                               |               |     |     |      |    |
+|          | (Loop de entrada será repetido até que um número válido seja dado) |             |     |     |      |    |
+|          |                                                                  |               |     |     |      |    |
+
+| Iteração | Ação                                                             | Entrada/Saída | T1  | T2  | Tmem | TS |
+|----------|------------------------------------------------------------------|---------------|-----|-----|------|----|
+| -        | **Inicialização das Variáveis**                                  |               | 0   | 1   |      |    |
+| -        | **Entrada do Termo de Fibonacci a ser calculado**               |               |     |     |      | -90|
+| 1        | Mensagem: "Digite qual termo de Fibonacci você quer calcular"   |               |     |     |      |    |
+|          | Entrada: TS                                                      |               |     |     |      | -90|
+|          |                                                                  |               |     |     |      |    |
+| 2        | **Verificação da Validade do Número**                            |               |     |     |      |    |
+|          | Mensagem: "Digite um termo válido"                               |               |     |     |      |    |
+|          | (Loop de entrada será repetido até que um número válido seja dado) |             |     |     |      |    |
+|          |                                                                  |               |     |     |      |    |
 
 ### Questão 7 - Inversão dos dígitos de um número inteiro (2 pontos)
 
-Inverter a ordem dos dígitos de um número inteiro positivo.
+Implemente e teste um algoritmo para inverter a ordem dos dígitos de um número inteiro positivo.
 
-#### Fluxograma (0.5 ponto)
+#### Descrição geral do algoritmo
+
+1. Obter o número inteiro positivo $num$ a ser invertido;
+2. Inicializar a variável $num \textunderscore inv$ com 0 (zero);
+3. Enquanto o número for maior que zero ($num > 0$), faça repetidamente:
+    - Calcular o último dígito do número na variável $digito$;
+    - Adicionar o dígito ao número invertido $num \textunderscore inv$;
+    - Remover o último dígito do número original $num$; 
+4. Exibir o número invertido.
+
+#### Fluxograma
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{Digite um número inteiro: }}
+B --> C[\num\]
+C --> D{num >= 0}
+D --TRUE--> G[num_inv = 0]
+G --> H{num > 0}
+H --FALSE--> Z{{"Número invertido:", numero_inv}}
+Z --> W([FIM])
+H --TRUE--> I[digito = num % 10]
+I --> J[num_inv = num_inv * 10 + digito]
+J --> K[numero = numero // 10]
+K --LOOP--> H
+D --FALSE--> E{{O número deve ser positivo!}}
+E --> W
 ```
 
-#### Pseudocódigo (1.0 ponto)
+#### Pseudocódigo (2 pontos)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+Algoritimo Inver
+DECLARE Num, Num_inv, mem, mem2: Int
+INICIO
+ESCREVA "Digite o número que voce quer inverter"
+LEIA Num
+mem2 = Num
+ENQUANTO Num <= 9 FAÇA
+	ESCREVA "O número precisa ser positivo e ter mais de dois algarismos"
+	ESCREVA "Digite o número que voce quer inverter"
+FIM_ENQUANTO
+ENQUANTO Num > 0 FAÇA
+	mem = Num % 10
+        Num =// 10
+	Num_inv =* 10
+	Num_inv =+ mem
+FIM_ENQUANTO
+ESCREVA "O número", mem2, "após inverter os algarismos é", Num_inv
+FIM_ALGORITIMO 
 ```
 
-#### Teste de mesa (0.5 ponto)
+#### Teste de mesa
+##### Chat GPT
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| Iteração | Ação                                      | Entrada/Saída | Num    | Num_inv | mem  |
+|----------|-------------------------------------------|----------------|--------|---------|------|
+| -        | **Inicialização**                         |                | 12345  | 0       | -    |
+| 1        | Leitura do número a ser invertido         |                | 12345  | 0       | -    |
+| -        | Verificação da validade do número         |                | 12345  | 0       | -    |
+| -        | (Número válido)                            |                | 12345  | 0       | -    |
+| 2        | Início do loop de inversão                |                | 12345  | 0       | -    |
+| 2.1      | Cálculo do resto da divisão por 10 (mem)  |                | 12345  | 0       | 5    |
+| 2.2      | Atualização do número (Num //= 10)        |                | 1234   | 0       | 5    |
+| 2.3      | Multiplicação e adição (Num_inv)          |                | 1234   | 5       | 5    |
+| 3        | Próxima iteração                          |                | 1234   | 5       | -    |
+| 3.1      | Cálculo do resto da divisão por 10 (mem)  |                | 1234   | 5       | 4    |
+| 3.2      | Atualização do número (Num //= 10)        |                | 123    | 5       | 4    |
+| 3.3      | Multiplicação e adição (Num_inv)          |                | 123    | 54      | 4    |
+| 4        | Próxima iteração                          |                | 123    | 54      | -    |
+| 4.1      | Cálculo do resto da divisão por 10 (mem)  |                | 123    | 54      | 3    |
+| 4.2      | Atualização do número (Num //= 10)        |                | 12     | 54      | 3    |
+| 4.3      | Multiplicação e adição (Num_inv)          |                | 12     | 543     | 3    |
+| 5        | Próxima iteração                          |                | 12     | 543     | -    |
+| 5.1      | Cálculo do resto da divisão por 10 (mem)  |                | 12     | 543     | 2    |
+| 5.2      | Atualização do número (Num //= 10)        |                | 1      | 543     | 2    |
+| 5.3      | Multiplicação e adição (Num_inv)          |                | 1      | 5432    | 2    |
+| 6        | Próxima iteração                          |                | 1      | 5432    | -    |
+| 6.1      | Cálculo do resto da divisão por 10 (mem)  |                | 1      | 5432    | 1    |
+| 6.2      | Atualização do número (Num //= 10)        |                | 0      | 5432    | 1    |
+| 6.3      | Multiplicação e adição (Num_inv)          |                | 0      | 54321   | 1    |
+| 7        | Próxima iteração                          |                | 0      | 54321   | -    |
+| 7.1      | (Condição de saída do loop)               |                | 0      | 54321   | -    |
+| -        | **Saída do Resultado**                    | O número 12345 após inverter os algarismos é 54321| 0      | 54321   | -    |
+
